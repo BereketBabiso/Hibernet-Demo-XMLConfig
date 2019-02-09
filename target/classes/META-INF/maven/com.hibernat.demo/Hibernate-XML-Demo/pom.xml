@@ -13,6 +13,13 @@
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
   </properties>
+  
+  <repositories>
+		<repository>
+			<id>JBoss repository</id>
+			<url>http://repository.jboss.org/nexus/content/groups/public/</url>
+		</repository>
+	</repositories>
 
   <dependencies>
   
@@ -23,18 +30,20 @@
 		<version>8.0.15</version>
 	</dependency>
 
-	<!-- https://mvnrepository.com/artifact/c3p0/c3p0 -->
-	<dependency>
-		<groupId>c3p0</groupId>
-		<artifactId>c3p0</artifactId>
-		<version>0.9.1.2</version>
-	</dependency>
+	
+	<!-- Hibernate c3p0 connection pool -->
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-c3p0</artifactId>
+			<version>4.2.3.Final</version>
+		</dependency>
+		
 
 	<!-- https://mvnrepository.com/artifact/org.hibernate/hibernate-core -->
 	<dependency>
 		<groupId>org.hibernate</groupId>
 		<artifactId>hibernate-core</artifactId>
-		<version>5.4.1.Final</version>
+		<version>4.2.3.Final</version>
 	</dependency>
 	
 	

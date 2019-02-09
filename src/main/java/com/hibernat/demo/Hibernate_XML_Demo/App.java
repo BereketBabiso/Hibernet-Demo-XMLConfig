@@ -1,14 +1,10 @@
 package com.hibernat.demo.Hibernate_XML_Demo;
 
 import java.util.List;
-import java.util.Properties;
 
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
-import org.hibernate.boot.MetadataSources;
-import org.hibernate.boot.registry.StandardServiceRegistry;
-import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;
 
 import com.hibernat.demo.domain.Employee;
@@ -22,12 +18,12 @@ public class App {
 	public static void setup() {
 		
 		// Create StandardServiceRegistry(recommended) or BootstrapServiceRegistry.
-		final StandardServiceRegistry registery = new StandardServiceRegistryBuilder()
-				                            .configure("hibernate.cfg.xml").build();
+//		final StandardServiceRegistry registery = new StandardServiceRegistryBuilder()
+//				                            .configure("hibernate.cfg.xml").build();
 		try {
 			// Create the SessionFactory using the ServiceRegistry
 			System.out.println("attempting to build session factory...");
-			sessionFactory = new MetadataSources(registery).buildMetadata().buildSessionFactory();
+			sessionFactory = new Configuration().configure().buildSessionFactory();
 			System.out.println("session factory build success");
 		} catch(HibernateException hibernateException) {
 			System.out.println("error 1 "+hibernateException.getMessage());
@@ -42,9 +38,13 @@ public class App {
         System.out.println( "Hello World!" );
         setup();
         Session session = sessionFactory.openSession();
+        System.out.println("connection statistics : "+sessionFactory.getStatistics());
         session.beginTransaction();
+        System.out.println("connection statistics : "+sessionFactory.getStatistics());
         List<Employee> empList = session.createQuery("from Employee").list();
+        System.out.println("connection statistics : "+sessionFactory.getStatistics());
         empList.stream().forEach((empl)-> { System.out.println(empl.getName());});
+        System.out.println("connection statistics : "+sessionFactory.getStatistics());
         session.getTransaction().commit();
     }
 }
