@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+	<!-- class name should be full qualified name of the POJO -->
+	
+	<class name="com.hibernat.demo.domain.Employee" table="employees">
+		<meta attribute="class-description">
+			This class contains the employee detail.
+		</meta>
+		<id name="id" column="id" type="long">
+		</id>
+		<property name="name" type="string">
+			<column name="name"></column>
+		</property>
+		<property name="salary" type="double">
+			<column name="salary"></column>
+		</property>
+	</class>
+</hibernate-mapping>
