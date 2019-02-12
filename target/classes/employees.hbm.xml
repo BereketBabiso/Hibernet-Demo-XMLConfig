@@ -10,6 +10,7 @@
 			This class contains the employee detail.
 		</meta>
 		<id name="id" column="id" type="long">
+			<generator class="native"></generator>
 		</id>
 		<property name="name" type="string">
 			<column name="name"></column>
